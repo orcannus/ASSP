@@ -220,7 +220,7 @@ html,body{height:100%;background:var(--navy-deep);color:var(--text);font-family:
     </div>
     <div class="lg-card">
       <div class="lg-heading">Software License Required</div>
-      <div class="lg-sub">ASSP · NIST SP 800-171 SSP Generator · © Orcannus Technologies</div>
+      <div class="lg-sub">ASSP · NIST SP 800-171 SSP Generator · © 2026 Orcannus Technologies</div>
       <div class="lg-price">$49.99 &nbsp;<span style="font-family:var(--mono);font-size:10px;color:var(--text-dim);font-weight:400;">/ perpetual license</span></div>
       <div class="lg-features">
         <span>✓</span> Full System Security Plan generator<br>
@@ -230,11 +230,21 @@ html,body{height:100%;background:var(--navy-deep);color:var(--text);font-family:
         <span>✓</span> Export audit-ready SSP HTML report<br>
         <span>✓</span> Perpetual license — no subscription
       </div>
-      <a class="lg-paypal-btn" href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=rsweatland%40orcannus.com&item_name=ASSP+License&amount=49.99&currency_code=USD&no_shipping=1" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.06-.26.76-4.852.816-5.09a.932.932 0 0 1 .92-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.773-4.471z" fill="#4ab4ff"/></svg>
-        Buy with PayPal — $49.99
-      </a>
-      <div class="lg-note">After payment, your license key will be emailed within 1 business day.</div>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top" style="width:100%;margin-bottom:0;">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="rsweatland@orcannus.com">
+        <input type="hidden" name="item_name" value="ASSP License">
+        <input type="hidden" name="amount" value="49.99">
+        <input type="hidden" name="currency_code" value="USD">
+        <input type="hidden" name="return" value="https://orcannus.github.io/ASSP/thank-you.html">
+        <input type="hidden" name="cancel_return" value="https://orcannus.github.io/ASSP/cancel.html">
+        <input type="hidden" name="no_shipping" value="1">
+        <button type="submit" class="lg-paypal-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.93 4.778-4.005 7.201-9.138 7.201h-2.19a.563.563 0 0 0-.556.479l-1.187 7.527h-.506l-.24 1.516a.56.56 0 0 0 .554.647h3.882c.46 0 .85-.334.922-.788.06-.26.76-4.852.816-5.09a.932.932 0 0 1 .92-.788h.58c3.76 0 6.705-1.528 7.565-5.946.36-1.847.174-3.388-.773-4.471z" fill="#4ab4ff"/></svg>
+          BUY WITH PAYPAL — $49.99
+        </button>
+      </form>
+      <div class="lg-note">After payment, your license key will be emailed within 1 business day.<br><a href="pricing.html" style="color:var(--accent-light);font-size:8px;letter-spacing:0.5px;">View full pricing page →</a></div>
       <div class="lg-divider"><span>ALREADY HAVE A KEY</span></div>
       <label class="lg-field-label">Licensed To — Full Name</label>
       <input class="lg-input" id="lic-name" type="text" placeholder="e.g. Jane Smith" autocomplete="off"/>
@@ -246,7 +256,7 @@ html,body{height:100%;background:var(--navy-deep);color:var(--text);font-family:
       <div class="lg-error" id="lic-error"></div>
       <button class="lg-activate-btn" onclick="lgActivate()">Activate License →</button>
     </div>
-    <div class="lg-footer">Purchase at <span style="color:var(--accent-light)">orcannus.com</span> · support@orcannus.com · v1.0</div>
+    <div class="lg-footer">Purchase at <span style="color:var(--accent-light)">orcannus.com</span> · <a href="mailto:rsweatland@orcannus.com" style="color:var(--accent-light);text-decoration:none;">rsweatland@orcannus.com</a> · v1.0</div>
   </div>
 </div>
 
@@ -1250,15 +1260,4 @@ function initApp(){
   renderHW();renderSW();
   renderInterconnections();
   syncSystemFields();
-  updateClock();
-  setInterval(updateClock,1000);
-  document.getElementById('sys-date').value=new Date().toISOString().split('T')[0];
-}
-
-if(!lgCheckStored()){
-  updateClock();
-  setInterval(updateClock,1000);
-}
-</script>
-</body>
-</html>
+  upda
