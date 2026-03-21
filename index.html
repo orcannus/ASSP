@@ -244,7 +244,7 @@ html,body{height:100%;background:var(--navy-deep);color:var(--text);font-family:
           BUY WITH PAYPAL — $49.99
         </button>
       </form>
-      <div class="lg-note">After payment, your license key will be emailed within 1 business day.<br><a href="pricing.html" style="color:var(--accent-light);font-size:8px;letter-spacing:0.5px;">View full pricing page →</a></div>
+      <div class="lg-note">After payment, your license key will be emailed within 1 business day.<br><a href="landing.html" style="color:var(--accent-light);font-size:8px;letter-spacing:0.5px;">View full pricing page →</a></div>
       <div class="lg-divider"><span>ALREADY HAVE A KEY</span></div>
       <label class="lg-field-label">Licensed To — Full Name</label>
       <input class="lg-input" id="lic-name" type="text" placeholder="e.g. Jane Smith" autocomplete="off"/>
@@ -256,7 +256,7 @@ html,body{height:100%;background:var(--navy-deep);color:var(--text);font-family:
       <div class="lg-error" id="lic-error"></div>
       <button class="lg-activate-btn" onclick="lgActivate()">Activate License →</button>
     </div>
-    <div class="lg-footer">Purchase at <span style="color:var(--accent-light)">orcannus.com</span> · <a href="mailto:rsweatland@orcannus.com" style="color:var(--accent-light);text-decoration:none;">rsweatland@orcannus.com</a> · v1.0</div>
+    <div class="lg-footer">Purchase at <span style="color:var(--accent-light)">orcannus.com</span> · <a href="/cdn-cgi/l/email-protection#7406070311150018151a10341b0617151a1a01075a171b19" style="color:var(--accent-light);text-decoration:none;"><span class="__cf_email__" data-cfemail="a4d6d7d3c1c5d0c8c5cac0e4cbd6c7c5cacad1d78ac7cbc9">[email&#160;protected]</span></a> · v1.0</div>
   </div>
 </div>
 
@@ -481,7 +481,7 @@ html,body{height:100%;background:var(--navy-deep);color:var(--text);font-family:
 
 <div id="toast"></div>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ═══════════════════════════════════════════════════════════════════
 //  LICENSE SYSTEM
 // ═══════════════════════════════════════════════════════════════════
@@ -1250,14 +1250,4 @@ function escHtml(s){
 
 // ═══════════════════════════════════════════════════════════════════
 //  INIT
-// ═══════════════════════════════════════════════════════════════════
-function initApp(){
-  updateSidebar();
-  renderDashboard();
-  buildDomainFilters();
-  renderControls();
-  renderRoles();
-  renderHW();renderSW();
-  renderInterconnections();
-  syncSystemFields();
-  upda
+// ═══════════════════════════════════════════════════
