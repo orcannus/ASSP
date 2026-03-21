@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>ASSP — Automated Security System Planner | Orcannus Technologies</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Barlow+Condensed:wght@400;500;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:#070f1e;color:#ccd8ec;font-family:'Barlow',sans-serif;}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:60px;background:#0a1628;border-bottom:1px solid rgba(46,111,204,.35);}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-title{font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:700;letter-spacing:3px;color:#4a8fe0;}
+.nav-sub{font-family:'IBM Plex Mono',monospace;font-size:7px;color:#4e6888;letter-spacing:2px;text-transform:uppercase;margin-top:2px;}
+.nav-links{display:flex;align-items:center;gap:24px;}
+.nav-links a{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#7a90b0;text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:#4a8fe0;}
+.nav-cta{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:8px 20px;border:1px solid rgba(46,111,204,.55);background:rgba(46,111,204,.13);color:#4a8fe0;text-decoration:none;border-radius:4px;transition:background .2s;}
+.nav-cta:hover{background:rgba(46,111,204,.24);}
+
+/* ── HERO ── */
+#hero{background:linear-gradient(180deg,#0e2044 0%,#070f1e 100%);padding:90px 40px 80px;text-align:center;border-bottom:1px solid rgba(46,111,204,.2);position:relative;overflow:hidden;}
+#hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(46,111,204,.12) 0%,transparent 65%);pointer-events:none;}
+.eyebrow{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:3px;text-transform:uppercase;color:#4a8fe0;background:rgba(46,111,204,.13);border:1px solid rgba(46,111,204,.28);padding:4px 14px;border-radius:3px;margin-bottom:24px;}
+h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(60px,10vw,100px);font-weight:800;color:#edf2fb;letter-spacing:8px;line-height:1;margin-bottom:8px;}
+h1 span{color:#4a8fe0;}
+.hero-sub{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:400;color:#7a90b0;letter-spacing:4px;text-transform:uppercase;margin-bottom:24px;}
+.hero-desc{font-size:15px;color:#4e6888;max-width:580px;margin:0 auto 36px;line-height:1.9;}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+.btn-primary{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:14px 32px;border:1px solid rgba(46,111,204,.55);background:rgba(46,111,204,.18);color:#4a8fe0;text-decoration:none;display:inline-block;transition:background .2s;}
+.btn-primary:hover{background:rgba(46,111,204,.28);}
+.btn-ghost{font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:14px 32px;border:1px solid rgba(46,111,204,.28);background:transparent;color:#7a90b0;text-decoration:none;display:inline-block;transition:border-color .2s,color .2s;}
+.btn-ghost:hover{border-color:rgba(46,111,204,.55);color:#ccd8ec;}
+.hero-price{margin-top:28px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#4e6888;letter-spacing:1px;}
+.hero-price strong{color:#4a8fe0;font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:700;}
+
+/* ── TICKER ── */
+.ticker{background:rgba(46,111,204,.04);border-top:1px solid rgba(46,111,204,.15);border-bottom:1px solid rgba(46,111,204,.15);overflow:hidden;height:34px;display:flex;align-items:center;}
+.ticker-track{display:flex;gap:40px;white-space:nowrap;animation:tick 30s linear infinite;padding:0 20px;}
+.ticker-track span{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:#4e6888;}
+.ticker-dot{width:4px;height:4px;border-radius:50%;background:#4a8fe0;opacity:.5;display:inline-block;vertical-align:middle;}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SECTIONS ── */
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(46,111,204,.25),transparent);margin:0 40px;}
+section{max-width:1080px;margin:0 auto;padding:70px 40px;}
+.sec-label{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#4a8fe0;margin-bottom:10px;}
+h2{font-family:'Barlow Condensed',sans-serif;font-size:42px;font-weight:700;color:#edf2fb;letter-spacing:2px;margin-bottom:14px;line-height:1.1;}
+.sec-desc{font-size:14px;color:#4e6888;line-height:1.9;max-width:540px;margin-bottom:40px;}
+
+/* ── FEATURES ── */
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px;}
+.feat-card{background:#0d1929;border:1px solid rgba(46,111,204,.15);border-radius:8px;padding:24px;transition:border-color .2s;}
+.feat-card:hover{border-color:rgba(46,111,204,.3);}
+.feat-icon{font-size:26px;margin-bottom:12px;}
+.feat-title{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;color:#edf2fb;letter-spacing:1px;text-transform:uppercase;margin-bottom:7px;}
+.feat-desc{font-size:12px;color:#4e6888;line-height:1.8;}
+
+/* ── DOMAINS ── */
+.domains-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px;margin-top:32px;}
+.domain-card{background:#0d1929;border:1px solid rgba(46,111,204,.12);border-radius:6px;padding:14px 16px;}
+.domain-code{font-family:'IBM Plex Mono',monospace;font-size:8px;color:#4a8fe0;letter-spacing:1px;margin-bottom:4px;}
+.domain-name{font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:600;color:#edf2fb;}
+.domain-count{font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4e6888;margin-top:3px;}
+
+/* ── PREVIEW ── */
+.preview-box{background:#0d1929;border:1px solid rgba(46,111,204,.28);border-radius:8px;overflow:hidden;margin-top:40px;}
+.preview-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:#0e2044;border-bottom:1px solid rgba(46,111,204,.2);}
+.preview-title{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#4a8fe0;}
+.preview-badge{font-family:'IBM Plex Mono',monospace;font-size:7px;padding:2px 8px;border-radius:3px;background:rgba(46,111,204,.1);border:1px solid rgba(46,111,204,.28);color:#4a8fe0;}
+.preview-row{display:flex;align-items:center;gap:14px;padding:10px 16px;border-bottom:1px solid rgba(46,111,204,.06);}
+.preview-row:last-child{border-bottom:none;}
+.preview-id{font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4a8fe0;min-width:68px;}
+.preview-name{font-size:11px;color:#ccd8ec;flex:1;}
+.st{font-family:'IBM Plex Mono',monospace;font-size:7px;letter-spacing:1px;padding:2px 8px;border-radius:3px;text-transform:uppercase;}
+.st-impl{background:rgba(46,196,144,.12);color:#2ec490;border:1px solid rgba(46,196,144,.3);}
+.st-part{background:rgba(245,166,35,.12);color:#f5a623;border:1px solid rgba(245,166,35,.3);}
+.st-open{background:rgba(232,64,64,.12);color:#e84040;border:1px solid rgba(232,64,64,.3);}
+
+/* ── PRICING ── */
+#pricing{max-width:1080px;margin:0 auto;padding:70px 40px;text-align:center;}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:40px;text-align:left;}
+.price-card{background:#0d1929;border:1px solid rgba(46,111,204,.2);border-radius:10px;padding:32px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s;}
+.price-card:hover{border-color:rgba(46,111,204,.4);transform:translateY(-2px);}
+.price-card.featured{border-color:rgba(46,111,204,.55);background:linear-gradient(160deg,#0e2044 0%,#0d1929 60%);}
+.price-card.featured::before{content:'MOST POPULAR';position:absolute;top:0;left:50%;transform:translateX(-50%);background:#2e6fcc;color:#fff;font-family:'IBM Plex Mono',monospace;font-size:7px;letter-spacing:2px;padding:3px 14px;}
+.price-label{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:3px;text-transform:uppercase;color:#4a8fe0;margin-bottom:10px;}
+.price-big{font-family:'Barlow Condensed',sans-serif;font-size:72px;font-weight:800;color:#edf2fb;line-height:1;}
+.price-big sup{font-size:28px;vertical-align:top;margin-top:12px;display:inline-block;color:#4a8fe0;}
+.price-period{font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4e6888;letter-spacing:1px;margin-top:4px;margin-bottom:22px;}
+.price-list{margin-bottom:24px;}
+.price-item{display:flex;gap:10px;padding:7px 0;border-bottom:1px solid rgba(46,111,204,.07);font-size:13px;color:#7a90b0;}
+.price-item:last-child{border-bottom:none;}
+.chk{color:#2ec490;flex-shrink:0;}
+.price-btn{width:100%;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:14px;border:1px solid rgba(46,111,204,.55);background:rgba(46,111,204,.15);color:#4a8fe0;cursor:pointer;border-radius:5px;transition:background .2s;}
+.price-btn:hover{background:rgba(46,111,204,.28);}
+.price-note{font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4e6888;margin-top:12px;line-height:1.7;text-align:center;}
+.price-note a{color:#4a8fe0;text-decoration:none;}
+
+/* ── FAQ ── */
+.faq-wrap{max-width:720px;margin:0 auto;}
+.faq-item{background:#0d1929;border:1px solid rgba(46,111,204,.12);border-radius:6px;margin-bottom:4px;overflow:hidden;}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;cursor:pointer;font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:600;color:#edf2fb;letter-spacing:.5px;}
+.faq-q:hover{background:rgba(46,111,204,.04);}
+.faq-arrow{color:#4a8fe0;transition:transform .25s;flex-shrink:0;font-size:13px;}
+.faq-a{font-size:13px;color:#4e6888;line-height:1.8;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 18px;}
+.faq-a.open{max-height:220px;padding:0 18px 16px;}
+.faq-arrow.open{transform:rotate(180deg);}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid rgba(46,111,204,.2);padding:28px 40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#4e6888;letter-spacing:1px;}
+footer a{color:#4e6888;text-decoration:none;transition:color .2s;}
+footer a:hover{color:#4a8fe0;}
+.footer-links{display:flex;gap:22px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">
+    <svg width="30" height="33" viewBox="0 0 100 110" xmlns="http://www.w3.org/2000/svg">
+      <path d="M50 4 L96 28 L96 72 L50 106 L4 72 L4 28 Z" fill="#0e2044" stroke="#2e6fcc" stroke-width="4"/>
+      <path d="M50 11 L89 32 L89 70 L50 99 L11 70 L11 32 Z" fill="none" stroke="#2e6fcc" stroke-width="1.5" opacity=".5"/>
+      <ellipse cx="50" cy="68" rx="7" ry="9" fill="#4a8fe0"/>
+      <ellipse cx="50" cy="52" rx="5" ry="5.5" fill="#4a8fe0"/>
+      <path d="M43 62 Q28 48 14 42 Q22 52 25 62 Q33 60 43 68 Z" fill="#4a8fe0"/>
+      <path d="M57 62 Q72 48 86 42 Q78 52 75 62 Q67 60 57 68 Z" fill="#4a8fe0"/>
+      <path d="M44 76 L42 92 L46 86 L50 93 L54 86 L58 92 L56 76 Z" fill="#4a8fe0"/>
+    </svg>
+    <div>
+      <div class="nav-title">ASSP</div>
+      <div class="nav-sub">by Orcannus Technologies</div>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#coverage">Coverage</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="app.html" class="nav-cta">Launch App →</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div id="hero">
+  <div class="eyebrow">NIST SP 800-171 · SSP Generator · System Security Planning</div>
+  <h1><span>ASSP</span></h1>
+  <div class="hero-sub">Automated Security System Planner</div>
+  <p class="hero-desc">The professional tool for documenting your System Security Plan. Plan, assess, and export audit-ready security documentation for NIST SP 800-171 compliance — in a single secure file.</p>
+  <div class="hero-btns">
+    <a href="#pricing" class="btn-primary">Get Your License — From $29</a>
+    <a href="app.html" class="btn-ghost">Launch App →</a>
+  </div>
+  <div class="hero-price"><strong>From $29</strong> &nbsp;·&nbsp; Perpetual License &nbsp;·&nbsp; No Subscription &nbsp;·&nbsp; Single File App</div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-dot"></span><span>110 NIST SP 800-171 Controls</span>
+    <span class="ticker-dot"></span><span>System Security Plan Generator</span>
+    <span class="ticker-dot"></span><span>Boundary Documentation</span>
+    <span class="ticker-dot"></span><span>Roles &amp; Responsibilities</span>
+    <span class="ticker-dot"></span><span>Interconnections Tracker</span>
+    <span class="ticker-dot"></span><span>Audit-Ready HTML Export</span>
+    <span class="ticker-dot"></span><span>No Server Required</span>
+    <span class="ticker-dot"></span><span>Perpetual License</span>
+    <span class="ticker-dot"></span><span>110 NIST SP 800-171 Controls</span>
+    <span class="ticker-dot"></span><span>System Security Plan Generator</span>
+    <span class="ticker-dot"></span><span>Boundary Documentation</span>
+    <span class="ticker-dot"></span><span>Roles &amp; Responsibilities</span>
+    <span class="ticker-dot"></span><span>Interconnections Tracker</span>
+    <span class="ticker-dot"></span><span>Audit-Ready HTML Export</span>
+    <span class="ticker-dot"></span><span>No Server Required</span>
+    <span class="ticker-dot"></span><span>Perpetual License</span>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="sec-label">What's Included</div>
+  <h2>Everything You Need for<br>NIST SP 800-171 Documentation</h2>
+  <p class="sec-desc">ASSP is purpose-built for organizations that need to plan, document, and demonstrate their security posture against the full 110-control NIST SP 800-171 framework.</p>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-icon">🛡️</div>
+      <div class="feat-title">Control Planning</div>
+      <div class="feat-desc">Work through all 110 NIST SP 800-171 Rev 2 controls organized by domain. Document planned implementations, assign status, and add detailed implementation notes.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📋</div>
+      <div class="feat-title">System Boundary</div>
+      <div class="feat-desc">Document your system environment, boundary description, CUI categories, network topology, IP ranges, cloud services, and data flows in a structured format.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">👤</div>
+      <div class="feat-title">Roles &amp; Responsibilities</div>
+      <div class="feat-desc">Define and document all security roles within your organization — owners, ISSOs, administrators, and users — with responsibilities mapped to controls.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🔗</div>
+      <div class="feat-title">Interconnections</div>
+      <div class="feat-desc">Catalog all external system connections, third-party integrations, and data flows. Document connection types, data classifications, and security agreements.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📄</div>
+      <div class="feat-title">SSP Export</div>
+      <div class="feat-desc">Generate a complete, professional System Security Plan in HTML format. Audit-ready output suitable for internal review, assessor submission, and compliance documentation.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">💾</div>
+      <div class="feat-title">Local Data Storage</div>
+      <div class="feat-desc">All data stays in your browser's local storage — nothing leaves your machine. Save to JSON file anytime and reload later. Zero cloud dependency, zero data exposure.</div>
+    </div>
+  </div>
+
+  <!-- PREVIEW -->
+  <div class="preview-box" style="margin-top:50px;">
+    <div class="preview-header">
+      <span class="preview-title">Control Assessment · Access Control (AC)</span>
+      <span class="preview-badge">22 Controls</span>
+    </div>
+    <div class="preview-row"><span class="preview-id">3.1.1</span><span class="preview-name">Limit system access to authorized users, processes acting on behalf of authorized users, and devices</span><span class="st st-impl">Planned</span></div>
+    <div class="preview-row"><span class="preview-id">3.1.2</span><span class="preview-name">Limit system access to the types of transactions and functions that authorized users are permitted to execute</span><span class="st st-impl">Planned</span></div>
+    <div class="preview-row"><span class="preview-id">3.1.3</span><span class="preview-name">Control the flow of CUI in accordance with approved authorizations</span><span class="st st-part">In Progress</span></div>
+    <div class="preview-row"><span class="preview-id">3.1.4</span><span class="preview-name">Separate the duties of individuals to reduce the risk of malevolent activity without collusion</span><span class="st st-part">In Progress</span></div>
+    <div class="preview-row"><span class="preview-id">3.1.5</span><span class="preview-name">Employ the principle of least privilege, including for specific security functions and privileged accounts</span><span class="st st-open">Not Started</span></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- COVERAGE -->
+<section id="coverage">
+  <div class="sec-label">Full Coverage</div>
+  <h2>All 14 NIST SP 800-171<br>Practice Domains</h2>
+  <p class="sec-desc">Every domain from NIST SP 800-171 Rev 2 is fully covered — 110 controls total, organized for comprehensive SSP documentation.</p>
+  <div class="domains-grid">
+    <div class="domain-card"><div class="domain-code">AC</div><div class="domain-name">Access Control</div><div class="domain-count">22 controls</div></div>
+    <div class="domain-card"><div class="domain-code">AT</div><div class="domain-name">Awareness &amp; Training</div><div class="domain-count">3 controls</div></div>
+    <div class="domain-card"><div class="domain-code">AU</div><div class="domain-name">Audit &amp; Accountability</div><div class="domain-count">9 controls</div></div>
+    <div class="domain-card"><div class="domain-code">CM</div><div class="domain-name">Configuration Mgmt</div><div class="domain-count">9 controls</div></div>
+    <div class="domain-card"><div class="domain-code">IA</div><div class="domain-name">Identification &amp; Auth</div><div class="domain-count">11 controls</div></div>
+    <div class="domain-card"><div class="domain-code">IR</div><div class="domain-name">Incident Response</div><div class="domain-count">3 controls</div></div>
+    <div class="domain-card"><div class="domain-code">MA</div><div class="domain-name">Maintenance</div><div class="domain-count">6 controls</div></div>
+    <div class="domain-card"><div class="domain-code">MP</div><div class="domain-name">Media Protection</div><div class="domain-count">9 controls</div></div>
+    <div class="domain-card"><div class="domain-code">PS</div><div class="domain-name">Personnel Security</div><div class="domain-count">2 controls</div></div>
+    <div class="domain-card"><div class="domain-code">PE</div><div class="domain-name">Physical Protection</div><div class="domain-count">6 controls</div></div>
+    <div class="domain-card"><div class="domain-code">RA</div><div class="domain-name">Risk Assessment</div><div class="domain-count">3 controls</div></div>
+    <div class="domain-card"><div class="domain-code">CA</div><div class="domain-name">Security Assessment</div><div class="domain-count">4 controls</div></div>
+    <div class="domain-card"><div class="domain-code">SC</div><div class="domain-name">System &amp; Comm Protection</div><div class="domain-count">16 controls</div></div>
+    <div class="domain-card"><div class="domain-code">SI</div><div class="domain-name">System &amp; Info Integrity</div><div class="domain-count">7 controls</div></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="sec-label" style="text-align:center;">Simple Pricing</div>
+  <h2 style="text-align:center;">One Payment. Yours Forever.</h2>
+  <p class="sec-desc" style="margin:0 auto 0;text-align:center;">Perpetual licenses — no subscriptions, no renewals. Pay once, own it.</p>
+
+  <div class="pricing-grid">
+
+    <!-- BASIC -->
+    <div class="price-card">
+      <div class="price-label">Basic License</div>
+      <div class="price-big"><sup>$</sup>29</div>
+      <div class="price-period">Perpetual License · No Subscription</div>
+      <div class="price-list">
+        <div class="price-item"><span class="chk">✓</span><span>Core security planning modules</span></div>
+        <div class="price-item"><span class="chk">✓</span><span>Up to 5 system assessments</span></div>
+        <div class="price-item"><span class="chk">✓</span><span>All 14 NIST domains covered</span></div>
+        <div class="price-item"><span class="chk">✓</span><span>SSP HTML export</span></div>
+        <div class="price-item"><span class="chk">✓</span><span>Email support</span></div>
+        <div class="price-item"><span class="chk">✓</span><span>12-month updates</span></div>
+      </div>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="rsweatland@orcannus.com">
+        <input type="hidden" name="item_name" value="ASSP Basic License">
+        <input type="hidden" name="amount" value="29.00">
+        <input type="hidden" name="currency_code" value="USD">
+        <input type="hidden" name="return" value="https://orcannus.github.io/ASSP/thank-you.html">
+        <input type="hidden" name="cancel_return" value="https://orcannus.github.io/ASSP/cancel.html">
+        <input type="hidden" name="no_shipping" value="1">
+        <input type="submit" value="BUY NOW — PAY WITH PAYPAL" class="price-btn">
+      </form>
+      <div class="price-note">License key emailed within 1 business day.<br><a href="/cdn-cgi/l/email-protection#ee9c9d998b8f9a828f808aae819c8d8f80809b9dc08d8183"><span class="__cf_email__" data-cfemail="611312160400150d000f05210e1302000f0f14124f020e0c">[email&#160;protected]</span></a></div>
+    </div>
+
+    <!-- PRO -->
+    <div class="price-card featured">
+      <div class="price-label">Pro License</div>
+      <div class="price-big"><sup>$</sup>49</div>
+      <div class="price-period">Perpetual License · No Subscription</div>
+      <div class="price-list">
+        <div class="price-item"><span class="chk">✓</span><span>All Basic features</span></div>
+        <div class="price-item"><span class="chk">✓</span><span>Unlimited system assessments</span></div>
+        <div class="price-item"><span class="chk">✓</span><span>Advanced threat modeling</span></div>
+        <div class="price-item"><span class="chk">✓</span><span>Custom report templates</span></div>
+        <div class="price-item"><span class="chk">✓</span><span>Priority email support</span></div>
+        <div class="price-item"><span class="chk">✓</span><span>Lifetime updates</span></div>
+      </div>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="rsweatland@orcannus.com">
+        <input type="hidden" name="item_name" value="ASSP Pro License">
+        <input type="hidden" name="amount" value="49.00">
+        <input type="hidden" name="currency_code" value="USD">
+        <input type="hidden" name="return" value="https://orcannus.github.io/ASSP/thank-you.html">
+        <input type="hidden" name="cancel_return" value="https://orcannus.github.io/ASSP/cancel.html">
+        <input type="hidden" name="no_shipping" value="1">
+        <input type="submit" value="BUY NOW — PAY WITH PAYPAL" class="price-btn">
+      </form>
+      <div class="price-note">License key emailed within 1 business day.<br><a href="/cdn-cgi/l/email-protection#8bf9f8fceeeaffe7eae5efcbe4f9e8eae5e5fef8a5e8e4e6"><span class="__cf_email__" data-cfemail="6f1d1c180a0e1b030e010b2f001d0c0e01011a1c410c0002">[email&#160;protected]</span></a></div>
+    </div>
+
+    <!-- ENTERPRISE -->
+    <div class="price-card">
+      <div class="price-label">Enterprise License</div>
+      <div class="price-big"><sup>$</sup>99</div>
+      <div class="price-period">Perpetual License · No Subscription</div>
+      <div class="price-list">
+        <div class="price-item"><span class="chk">✓</span><span>All Pro features</span></div>
+        <div class="price-item"><span class="chk">✓</span><span>Multi-site deployment</span></div>
+        <div class="price-item"><span class="chk">✓</span><span>Team collaboration tools</span></div>
+        <div class="price-item"><span class="chk">✓</span><span>API integration access</span></div>
+        <div class="price-item"><span class="chk">✓</span><span>Dedicated support channel</span></div>
+        <div class="price-item"><span class="chk">✓</span><span>Lifetime updates + SLA</span></div>
+      </div>
+      <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_xclick">
+        <input type="hidden" name="business" value="rsweatland@orcannus.com">
+        <input type="hidden" name="item_name" value="ASSP Enterprise License">
+        <input type="hidden" name="amount" value="99.00">
+        <input type="hidden" name="currency_code" value="USD">
+        <input type="hidden" name="return" value="https://orcannus.github.io/ASSP/thank-you.html">
+        <input type="hidden" name="cancel_return" value="https://orcannus.github.io/ASSP/cancel.html">
+        <input type="hidden" name="no_shipping" value="1">
+        <input type="submit" value="BUY NOW — PAY WITH PAYPAL" class="price-btn">
+      </form>
+      <div class="price-note">License key emailed within 1 business day.<br><a href="/cdn-cgi/l/email-protection#562425213337223a3738321639243537383823257835393b"><span class="__cf_email__" data-cfemail="7a08090d1f1b0e161b141e3a1508191b14140f0954191517">[email&#160;protected]</span></a></div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section id="faq" style="padding-bottom:70px;">
+  <div class="sec-label" style="text-align:center;">FAQ</div>
+  <h2 style="text-align:center;margin-bottom:32px;">Common Questions</h2>
+  <div class="faq-wrap">
+    <div class="faq-item">
+      <div class="faq-q" onclick="faq(this)"><span>What is NIST SP 800-171 and do I need an SSP?</span><span class="faq-arrow">▾</span></div>
+      <div class="faq-a">NIST SP 800-171 defines requirements for protecting Controlled Unclassified Information (CUI) in non-federal systems. If your organization handles CUI under a DoD contract or federal program, you are required to document how you protect that information in a System Security Plan (SSP).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faq(this)"><span>How is ASSP different from ARMS?</span><span class="faq-arrow">▾</span></div>
+      <div class="faq-a">ARMS is focused on CMMC 2.0 Level 2 assessment readiness — SPRS scoring, POA&M tracking, and evidence management. ASSP is focused on SSP generation and security system planning — documenting your environment, controls, roles, boundaries, and interconnections in a complete System Security Plan.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faq(this)"><span>How is the app delivered?</span><span class="faq-arrow">▾</span></div>
+      <div class="faq-a">ASSP is a single HTML file. After purchase you receive a license key by email. Open the app in any modern browser, enter your key, and you're in. No installation, no server, no cloud account required. Your data stays entirely on your machine.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faq(this)"><span>Where is my data stored?</span><span class="faq-arrow">▾</span></div>
+      <div class="faq-a">Entirely in your browser's local storage — nothing leaves your machine. You can export your data to a local JSON file at any time using the built-in Save function and reload it later. Zero cloud dependency.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faq(this)"><span>What's the difference between Basic, Pro, and Enterprise?</span><span class="faq-arrow">▾</span></div>
+      <div class="faq-a">Basic covers core planning for up to 5 systems with 12-month updates. Pro adds unlimited assessments, advanced threat modeling, and lifetime updates. Enterprise adds multi-site deployment, team tools, API integration, and a dedicated support SLA. All tiers are one-time perpetual licenses.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="faq(this)"><span>Is this a subscription? Will I be charged again?</span><span class="faq-arrow">▾</span></div>
+      <div class="faq-a">No subscription, ever. All ASSP licenses are one-time perpetual purchases. You pay once and own your tier permanently.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div><span style="color:#4a8fe0;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;">ASSP</span> &nbsp;·&nbsp; © 2026 Orcannus Technologies &nbsp;·&nbsp; All rights reserved</div>
+  <div class="footer-links">
+    <a href="/cdn-cgi/l/email-protection#dcaeafabb9bda8b0bdb2b89cb3aebfbdb2b2a9aff2bfb3b1"><span class="__cf_email__" data-cfemail="483a3b3f2d293c2429262c08273a2b2926263d3b662b2725">[email&#160;protected]</span></a>
+    <a href="https://orcannus.com">orcannus.com</a>
