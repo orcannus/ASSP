@@ -390,5 +390,29 @@ footer a:hover{color:#4a8fe0;}
 <footer>
   <div><span style="color:#4a8fe0;font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;">ASSP</span> &nbsp;·&nbsp; © 2026 Orcannus Technologies &nbsp;·&nbsp; All rights reserved</div>
   <div class="footer-links">
-    <a href="/cdn-cgi/l/email-protection#dcaeafabb9bda8b0bdb2b89cb3aebfbdb2b2a9aff2bfb3b1"><span class="__cf_email__" data-cfemail="483a3b3f2d293c2429262c08273a2b2926263d3b662b2725">[email&#160;protected]</span></a>
+    <a href="mailto:support@orcannus.com">support@orcannus.com</a>
     <a href="https://orcannus.com">orcannus.com</a>
+    <a href="app/index.html">Launch App</a>
+  </div>
+</footer>
+
+<script>
+function faq(el){
+  var item = el.parentElement;
+  var answer = item.querySelector('.faq-a');
+  var arrow = item.querySelector('.faq-arrow');
+  var isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(function(a){
+    a.classList.remove('open');
+  });
+  document.querySelectorAll('.faq-arrow.open').forEach(function(a){
+    a.classList.remove('open');
+  });
+  if(!isOpen){
+    answer.classList.add('open');
+    arrow.classList.add('open');
+  }
+}
+</script>
+</body>
+</html>
